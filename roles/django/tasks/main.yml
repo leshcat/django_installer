@@ -1,0 +1,8 @@
+---
+
+  - name: Install Django and its addons
+    pip: name={{item}} state=present
+    with_items:
+      - virtualenv
+      - django
+      - mysqlclient

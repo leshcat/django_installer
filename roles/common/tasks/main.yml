@@ -1,0 +1,11 @@
+---
+- name: Install common tools and its dependencies
+  yum: name={{item}} state=present
+  with_items:
+   - gcc
+   - python27
+   - python27-devel
+   - python27-pip
+   - python27-virtualenv
+   - MySQL-python27
+   - git

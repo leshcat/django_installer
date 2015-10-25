@@ -1,0 +1,10 @@
+---
+# Installing prerequisites and django with mysql support by default
+
+- hosts: sat
+  remote_user: root
+
+  roles:
+    - common
+    - mysql
+    - django

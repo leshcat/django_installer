@@ -1,0 +1,6 @@
+---
+  - name: restart mysql
+    action: service name=mysql state=restarted enabled=yes
+
+  - name: delete mysql_secure_installation
+    action: file dest=/tmp/mysql_secure_installation.sql state=absent

@@ -1,0 +1,4 @@
+finalize_mysql: ''
+# mysql -NBe "select password('your_password_here')"
+mysql_root_password: '*6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9'
+

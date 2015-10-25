@@ -1,0 +1,28 @@
+---
+
+  - name: install mysql-server
+    yum: name={{item}} state=present
+    with_items:
+      - mysql-server
+      - mysql-devel
+
+  - name: Enable mysql autostart
+    service: name=mysqld enabled=yes state=started
+
+  # Can't merge this task with importing one. Bug?
+  - name: Copying init sql scenario
+    template: src='mysql_secure_installation.sql' dest='/tmp'
+    when: (finalize_mysql == 'yes')
+   
+  - name: Importing sql scenario
+    mysql_db: name=mysql state=import target='/tmp/mysql_secure_installation.sql'
+    notify:
+      - restart mysql
+    ignore_errors: yes
+    when: (finalize_mysql == 'yes')
+
+  - name: Cleanup
+    command: /bin/true
+    notify:
+      - delete mysql_secure_installation
+    when: (finalize_mysql == 'yes')
