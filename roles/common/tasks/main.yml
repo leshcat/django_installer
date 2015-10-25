@@ -7,5 +7,6 @@
    - python27-devel
    - python27-pip
    - python27-virtualenv
+   - python27-httplib2
    - MySQL-python27
    - git
